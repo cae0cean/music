@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Favorite Singer...</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&family=Kalam&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #b3d9ff;
+      font-family: 'Quicksand', sans-serif;
+      text-align: center;
+      padding: 50px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 42px;
+      color: #ff66b2;
+      margin-bottom: 40px;
+    }
+
+    .singer-option {
+      background-color: #ffcce6;
+      border-radius: 25px;
+      padding: 12px 25px;
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      opacity: 0;
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .singer-option:nth-child(1) { animation-delay: 0.2s; }
+    .singer-option:nth-child(2) { animation-delay: 0.4s; }
+    .singer-option:nth-child(3) { animation-delay: 0.6s; }
+    .singer-option:nth-child(4) { animation-delay: 0.8s; }
+    .singer-option:nth-child(5) { animation-delay: 1s; }
+    .singer-option:nth-child(6) { animation-delay: 1.2s; }
+    .singer-option:nth-child(7) { animation-delay: 1.4s; }
+    .singer-option:nth-child(8) { animation-delay: 1.6s; }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    #message {
+      margin-top: 50px;
+      font-size: 26px;
+      color: #ff3399;
+      font-family: 'Kalam', cursive;
+      font-weight: bold;
+      display: none;
+      animation: jumpIn 1s ease forwards;
+    }
+
+    @keyframes jumpIn {
+      0% { opacity: 0; transform: translateY(40px) scale(0.8); }
+      60% { opacity: 1; transform: translateY(-10px) scale(1.05); }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      color: #ff66b2;
+      animation: floatUp 4s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-600px) scale(1.5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Favorite Singer...</h1>
+
+  <div class="singer-option">
+    <label><input type="checkbox" onclick="showMessage()">💗 LANY</label>
+  </div>
+  <div class="singer-option">
+    <label><input type="checkbox" onclick="showMessage()">💖 Taylor Swift</label>
+  </div>
+  <div class="singer-option">
+    <label><input type="checkbox" onclick="showMessage()">💓 Niki Zefanya</label>
+  </div>
+  <div class="singer-option">
+    <label><input type="checkbox" onclick="showMessage()">💘 Frank Ocean</label>
+  </div>
+  <div class="singer-option">
+    <label><input type="checkbox" onclick="showMessage()">💕 The Smith</label>
+  </div>
+  <div class="singer-option">
+    <label><input type="checkbox" onclick="showMessage()">💞 Ariana Grande</label>
+  </div>
+  <div class="singer-option">
+    <label><input type="checkbox" onclick="showMessage()">💝 Lana Del Rey</label>
+  </div>
+  <div class="singer-option">
+    <label><input type="checkbox" onclick="showMessage()">💟 Charlie Puth</label>
+  </div>
+
+  <div id="message">🎧 Listen to whatever makes you happy to survive the day 💖</div>
+
+  <script>
+    function showMessage() {
+      const msg = document.getElementById("message");
+      msg.style.display = "block";
+      createHearts();
+    }
+
+    function createHearts() {
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerText = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 10 + 15) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+      }
+    }
+  </script>
+
+</body>
+</html>
